@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 const pdfs = {
     "investor-charter": "/pdf/investor-charter.pdf",
     "sebi-registration": "/pdf/sebi-registration.pdf",
+    "investor-complaint-data": "/pdf/investor-complaint-data.pdf",
 };
 
 export default function PdfViewer() {

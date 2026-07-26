@@ -46,7 +46,7 @@ export default function LegalSection() {
             icon: FileText,
             slug: "investor-complaint-data",
             button: "View Details",
-            href: "/investor-complaint-data",
+            href: "/pdf/investor-complaint-data.pdf",
             external: false,
         },
 
