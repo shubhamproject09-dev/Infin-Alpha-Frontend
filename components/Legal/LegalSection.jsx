@@ -13,8 +13,28 @@ import {
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import {
+    store,
+} from "@/redux/store";
+
+import {
+    getInvestorComplaint,
+} from "@/redux/investorComplaint/investorComplaintThunk";
 
 export default function LegalSection() {
+    const { pdf } = useSelector(
+        (state) => state.investorComplaint
+    );
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+
+        dispatch(getInvestorComplaint());
+
+    }, [dispatch]);
 
     const documents = [
         {
@@ -42,11 +62,13 @@ export default function LegalSection() {
         {
             title: "Investor Complaint Data",
             description:
-                "View investor complaint statistics, complaint status, and grievance redressal information as prescribed under applicable regulatory requirements.",
+                "View investor complaint statistics...",
             icon: FileText,
             slug: "investor-complaint-data",
             button: "View Details",
-            href: "/pdf/investor-complaint-data.pdf",
+
+            href: pdf?.fileUrl || "",
+
             external: false,
         },
 
@@ -418,11 +440,15 @@ export default function LegalSection() {
                                                                     {/* Button */}
                                                                     <Link
                                                                         href={
-                                                                            doc.external
-                                                                                ? doc.href
-                                                                                : `/pdf-viewer/${doc.slug}`
+                                                                            doc.slug === "investor-complaint-data"
+                                                                                ? `/pdf-viewer/${doc.slug}`
+                                                                                : doc.external
+                                                                                    ? doc.href
+                                                                                    : `/pdf-viewer/${doc.slug}`
                                                                         }
-                                                                        target={doc.external ? "_blank" : "_self"}
+                                                                        target={
+                                                                            doc.external ? "_blank" : "_self"
+                                                                        }
                                                                         rel={doc.external ? "noopener noreferrer" : undefined}
                                                                         className="inline-flex items-center gap-2 mt-6 bg-[#009A9E] text-white px-6 py-3 rounded-xl hover:bg-[#00314A] transition-all duration-300"
                                                                     >

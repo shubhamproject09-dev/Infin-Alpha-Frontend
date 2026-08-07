@@ -1,0 +1,20 @@
+import Header from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
+export default function WebsiteLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <>
+      <Header />
+
+      <main className="min-h-screen">
+        {children}
+      </main>
+
+      <Footer />
+    </>
+  );
+}

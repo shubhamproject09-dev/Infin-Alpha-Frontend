@@ -10,10 +10,39 @@ import {
     Building2,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import type { Variants } from "framer-motion";
+import { toast } from "react-hot-toast";
+
+import {
+
+    createContact,
+
+} from "@/redux/contact/contactThunk";
+
+import {
+
+    AppDispatch,
+
+    RootState,
+
+} from "@/redux/store";
 import { useState } from "react";
 
 export default function ContactSection() {
-    const [loading, setLoading] = useState(false);
+    const dispatch = useDispatch<AppDispatch>();
+
+    const {
+
+        submitting,
+
+    } = useSelector(
+
+        (state: RootState) =>
+
+            state.contact
+
+    );
 
     const [formData, setFormData] = useState({
         name: "",
@@ -22,59 +51,53 @@ export default function ContactSection() {
         message: "",
     });
 
-    const handleChange = (e) => {
+    const handleChange = (
+        e: React.ChangeEvent<
+            HTMLInputElement |
+            HTMLTextAreaElement
+        >
+    ) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
         });
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (
+        e: React.FormEvent<HTMLFormElement>
+    ) => {
 
         e.preventDefault();
 
-        setLoading(true);
-
         try {
 
-            const res = await fetch("/api/contact", {
+            await dispatch(
+                createContact(formData)
+            ).unwrap();
 
-                method: "POST",
+            toast.success(
+                "Thank you! Your enquiry has been submitted successfully."
+            );
 
-                headers: {
-                    "Content-Type": "application/json",
-                },
-
-                body: JSON.stringify(formData),
-
+            setFormData({
+                name: "",
+                email: "",
+                phone: "",
+                message: "",
             });
 
-            const data = await res.json();
+        } catch (error: any) {
 
-            alert(data.message);
-
-            if (data.success) {
-
-                setFormData({
-                    name: "",
-                    email: "",
-                    phone: "",
-                    message: "",
-                });
-
-            }
-
-        } catch (error) {
-
-            alert("Something went wrong.");
+            toast.error(
+                error || "Something went wrong."
+            );
 
         }
 
-        setLoading(false);
-
     };
+
     // Animation variants
-    const fadeUp = {
+    const fadeUp: Variants = {
         hidden: {
             opacity: 0,
             y: 60,
@@ -89,7 +112,7 @@ export default function ContactSection() {
         },
     };
 
-    const fadeLeft = {
+    const fadeLeft: Variants = {
         hidden: {
             opacity: 0,
             x: -80,
@@ -104,7 +127,7 @@ export default function ContactSection() {
         },
     };
 
-    const fadeRight = {
+    const fadeRight: Variants = {
         hidden: {
             opacity: 0,
             x: 80,
@@ -119,7 +142,7 @@ export default function ContactSection() {
         },
     };
 
-    const staggerContainer = {
+    const staggerContainer: Variants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
@@ -130,7 +153,7 @@ export default function ContactSection() {
         },
     };
 
-    const contactCardVariants = {
+    const contactCardVariants: Variants = {
         hidden: {
             opacity: 0,
             x: -30,
@@ -147,7 +170,7 @@ export default function ContactSection() {
         },
     };
 
-    const formFieldVariants = {
+    const formFieldVariants: Variants = {
         hidden: {
             opacity: 0,
             y: 20,
@@ -164,7 +187,7 @@ export default function ContactSection() {
         },
     };
 
-    const buttonVariants = {
+    const buttonVariants: Variants = {
         hidden: {
             opacity: 0,
             y: 30,
@@ -759,7 +782,7 @@ export default function ContactSection() {
                                             type="submit"
                                             className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-[#009A9E] hover:bg-[#00314A] px-6 py-3.5 sm:py-4 text-sm font-semibold text-white transition-all duration-300 shadow-lg shadow-[#EAF9FA]/20"
                                         >
-                                            {loading ? "Sending..." : "Send Message"}
+                                            {submitting ? "Sending..." : "Send Message"}
                                             <motion.span
                                                 animate={{
                                                     x: [0, 5, 0],
