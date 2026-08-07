@@ -1,6 +1,6 @@
 "use client";
 
-import HistoryHero from "@/components/Admin/InvestorComplaintHistory/HistoryHero";
+import HistoryHero from "@/components/admin/InvestorComplaintHistory/HistoryHero";
 import HistorySummaryCards from "@/components/admin/InvestorComplaintHistory/HistorySummaryCards";
 import HistoryTable from "@/components/admin/InvestorComplaintHistory/HistoryTable";
 
