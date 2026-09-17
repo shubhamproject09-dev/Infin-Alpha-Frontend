@@ -207,31 +207,16 @@ export default function Footer() {
                         {/* Logo */}
                         <motion.div
                             whileHover={{
-                                scale: 1.05,
+                                scale: 1.03,
                                 transition: { duration: 0.3 },
                             }}
                         >
-                            <Link href="/" className="group flex items-center gap-3">
-                                {/* IA */}
-                                <motion.span
-                                    whileHover={{
-                                        rotate: [0, -10, 10, -5, 5, 0],
-                                        transition: { duration: 0.5 },
-                                    }}
-                                    className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-[#009A9E] to-[#00314A] text-white font-black text-2xl shadow-lg"
-                                >
-                                    IA
-                                </motion.span>
-
-                                {/* Text */}
-                                <div className="flex flex-col leading-none">
-                                    <span className="text-White font-extrabold text-xl sm:text-2xl tracking-[2px] uppercase">
-                                        INFIN ALPHA
-                                    </span>
-                                    <span className="text-White text-[10px] sm:text-xs font-semibold tracking-[7px] sm:tracking-[7.8px] uppercase">
-                                        ALTERNATIVES
-                                    </span>
-                                </div>
+                            <Link href="/" className="group flex items-center">
+                                <img
+                                    src="/logo1.png"
+                                    alt="INFIN Alpha Alternatives"
+                                    className="block w-[220px] sm:w-[240px] lg:w-[260px] h-auto object-contain"
+                                />
                             </Link>
                         </motion.div>
 

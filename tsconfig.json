@@ -37,7 +37,8 @@
     "**/*.mts",
     "components/Investment/philosophy/Philosophy.jsx",
     "app/admin/layout.jsx",
-    "app/admin/page.jsx"
+    "app/admin/page.jsx",
+    "components/admin/InvestorComplaintHistory/StatusBadge.jsx"
   ],
   "exclude": [
     "node_modules"

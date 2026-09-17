@@ -81,22 +81,12 @@ export default function Navbar() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2, duration: 0.6 }}
                 >
-                    <Link href="/" className="group flex items-center gap-3">
-                        {/* IA */}
-                        <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-[#009A9E] to-[#00314A] text-white font-black text-2xl shadow-lg">
-                            IA
-                        </span>
-
-                        {/* Text */}
-                        <div className="flex flex-col leading-none">
-                            <span className="text-[#009A9E] font-extrabold text-xl sm:text-2xl tracking-[2px] uppercase">
-                                INFIN ALPHA
-                            </span>
-
-                            <span className="text-[#009A9E] text-[10px] sm:text-xs font-semibold tracking-[7px] sm:tracking-[7.8px] uppercase">
-                                ALTERNATIVES
-                            </span>
-                        </div>
+                    <Link href="/" className="group flex items-center">
+                        <img
+                            src="/logo.png"
+                            alt="INFIN Alpha Alternatives"
+                            className="block w-[220px] sm:w-[200px] lg:w-[230px] h-auto object-contain"
+                        />
                     </Link>
                 </motion.div>
 
@@ -273,22 +263,12 @@ export default function Navbar() {
 
                         <div className="relative z-10">
                             <div className="flex items-center justify-between mb-4">
-                                <Link href="/" className="group flex items-center gap-2">
-                                    {/* IA */}
-                                    <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-[#009A9E] to-[#00314A] text-white font-black text-2xl shadow-lg">
-                                        IA
-                                    </span>
-
-                                    {/* Text */}
-                                    <div className="flex flex-col leading-none">
-                                        <span className="text-White font-extrabold text-xl sm:text-2xl tracking-[2px] uppercase">
-                                            INFIN ALPHA
-                                        </span>
-
-                                        <span className="text-White text-[10px] sm:text-xs font-semibold tracking-[7px] uppercase">
-                                            ALTERNATIVES
-                                        </span>
-                                    </div>
+                                <Link href="/" className="group flex items-center">
+                                    <img
+                                        src="/logo1.png"
+                                        alt="INFIN Alpha Alternatives"
+                                        className="block w-[180px] sm:w-[210px] h-auto object-contain"
+                                    />
                                 </Link>
                                 <button
                                     onClick={closeDrawer}
