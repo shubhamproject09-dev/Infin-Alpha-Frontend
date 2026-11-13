@@ -75,18 +75,26 @@ export default function Navbar() {
         >
             <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4">
 
+
+
                 {/* Logo */}
                 <motion.div
                     initial={{ opacity: 0, x: -40 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2, duration: 0.6 }}
                 >
-                    <Link href="/" className="group flex items-center">
-                        <img
-                            src="/logo.png"
-                            alt="INFIN Alpha Alternatives"
-                            className="block w-[220px] sm:w-[200px] lg:w-[230px] h-auto object-contain"
-                        />
+                    <Link
+                        href="/"
+                        aria-label="INFIN Alpha Home"
+                        className="group flex items-center shrink-0"
+                    >
+                        <div className="relative rounded-xl bg-white px-2 py-1.5  transition-all duration-300">
+                            <img
+                                src="/newlogo.png"
+                                alt="INFIN Alpha Alternatives"
+                                className="block w-[160px] sm:w-[180px] lg:w-[200px] h-auto object-contain"
+                            />
+                        </div>
                     </Link>
                 </motion.div>
 
@@ -265,7 +273,7 @@ export default function Navbar() {
                             <div className="flex items-center justify-between mb-4">
                                 <Link href="/" className="group flex items-center">
                                     <img
-                                        src="/logo1.png"
+                                        src="/newlogo.png"
                                         alt="INFIN Alpha Alternatives"
                                         className="block w-[180px] sm:w-[210px] h-auto object-contain"
                                     />

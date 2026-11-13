@@ -215,7 +215,7 @@ export default function Footer() {
                                 <img
                                     src="/logo1.png"
                                     alt="INFIN Alpha Alternatives"
-                                    className="block w-[220px] sm:w-[240px] lg:w-[260px] h-auto object-contain"
+                                    className="block w-[180px] sm:w-[200px] lg:w-[220px] h-auto object-contain"
                                 />
                             </Link>
                         </motion.div>
@@ -462,7 +462,7 @@ export default function Footer() {
                                         Phone Number
                                     </p>
                                     <p className="mt-2 text-slate-200 leading-7">
-                                        +91 0000000000
+                                        +91 9711172677
                                     </p>
                                 </div>
                             </motion.div>
@@ -491,7 +491,7 @@ export default function Footer() {
                                         Email Address
                                     </p>
                                     <p className="mt-2 text-slate-200 leading-7 break-all">
-                                        contact@infinalpha.com
+                                        info@infinalpha.com
                                     </p>
                                 </div>
                             </motion.div>

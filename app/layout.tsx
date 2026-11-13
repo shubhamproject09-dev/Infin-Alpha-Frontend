@@ -15,9 +15,9 @@ export const metadata = {
     title: "INFIN ALPHA",
     description: "Investment Platform",
     icons: {
-        icon: "/Favicon1.png",
-        shortcut: "/Favicon1.png",
-        apple: "/Favicon1.png",
+        icon: "/Favicon.png",
+        shortcut: "/Favicon.png",
+        apple: "/Favicon.png",
     },
 };
 

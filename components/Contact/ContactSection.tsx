@@ -526,7 +526,7 @@ export default function ContactSection() {
                                                     transition={{ delay: 0.5, duration: 0.5 }}
                                                     className="mt-3 sm:mt-4 text-base sm:text-lg"
                                                 >
-                                                    +91 0000000000
+                                                    +91 9711172677
                                                 </motion.p>
                                             </div>
                                         </div>
@@ -572,7 +572,7 @@ export default function ContactSection() {
                                                     transition={{ delay: 0.7, duration: 0.5 }}
                                                     className="mt-3 sm:mt-4 text-base sm:text-lg break-all"
                                                 >
-                                                    contact@infinalpha.com
+                                                    info@infinalpha.com
                                                 </motion.p>
                                             </div>
                                         </div>

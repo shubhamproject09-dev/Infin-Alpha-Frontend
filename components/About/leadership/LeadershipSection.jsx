@@ -372,8 +372,7 @@ export default function LeadershipSection() {
                                     {
                                         name: "Mr. Aswini Sahoo",
                                         role: "Fund Manager - BSOF",
-                                        image:
-                                            "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1600&auto=format&fit=crop",
+                                        image: "/Team/AshwaniSir.jpg",
                                         desc: "Mr. Aswini Sahoo, Fund Manager of BSOF, brings over 25 years of experience in private credit, special situations, and stressed asset investing.",
                                         tags: [
                                             "Private Credit",
