@@ -38,7 +38,8 @@
     "components/Investment/philosophy/Philosophy.jsx",
     "app/admin/layout.jsx",
     "app/admin/page.jsx",
-    "components/admin/InvestorComplaintHistory/StatusBadge.jsx"
+    "components/admin/InvestorComplaintHistory/StatusBadge.jsx",
+    "components/Investment/caseStudy/CaseStudy.jsx"
   ],
   "exclude": [
     "node_modules"

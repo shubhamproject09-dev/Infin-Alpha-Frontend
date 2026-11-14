@@ -1,7 +1,7 @@
 
 
-import Qualified from "@/components/Investor/Qualified-Access/Qualified-Access";
+// import Qualified from "@/components/Investor/Qualified-Access/Qualified-Access";
 
-export default function Page() {
-    return <Qualified />;
-}
+// export default function Page() {
+//     return <Qualified />;
+// }

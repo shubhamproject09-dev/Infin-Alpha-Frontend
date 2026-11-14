@@ -1,7 +1,7 @@
 
 
-import Information from "@/components/Investor/Information-Security/Information-Security";
+// import Information from "@/components/Investor/Information-Security/Information-Security";
 
-export default function Page() {
-    return <Information />;
-}
+// export default function Page() {
+//     return <Information />;
+// }

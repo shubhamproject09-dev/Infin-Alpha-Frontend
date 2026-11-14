@@ -1,7 +1,7 @@
 
 
-import Alternative from "@/components/Insights/alternative-investments/Alternative-Investments";
+// import Alternative from "@/components/Insights/alternative-investments/Alternative-Investments";
 
-export default function Page() {
-    return <Alternative />;
-}
+// export default function Page() {
+//     return <Alternative />;
+// }

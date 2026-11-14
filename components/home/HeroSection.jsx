@@ -1,20 +1,36 @@
+
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, TrendingUp, ShieldCheck, Landmark } from "lucide-react";
+import {
+    ArrowRight,
+    TrendingUp,
+    ShieldCheck,
+    Landmark,
+} from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function HeroSection() {
+    const containerVariants = {
+        hidden: {},
+        visible: {
+            transition: {
+                staggerChildren: 0.15,
+                delayChildren: 0.1,
+            },
+        },
+    };
+
     const fadeUp = {
         hidden: {
             opacity: 0,
-            y: 60,
+            y: 30,
         },
         visible: {
             opacity: 1,
             y: 0,
             transition: {
-                duration: 0.8,
+                duration: 0.7,
                 ease: "easeOut",
             },
         },
@@ -23,22 +39,7 @@ export default function HeroSection() {
     const fadeLeft = {
         hidden: {
             opacity: 0,
-            x: -80,
-        },
-        visible: {
-            opacity: 1,
-            x: 0,
-            transition: {
-                duration: 0.9,
-                ease: [0.22, 1, 0.36, 1],
-            },
-        },
-    };
-
-    const fadeRight = {
-        hidden: {
-            opacity: 0,
-            x: 80,
+            x: -40,
         },
         visible: {
             opacity: 1,
@@ -49,296 +50,503 @@ export default function HeroSection() {
             },
         },
     };
+
+    const fadeRight = {
+        hidden: {
+            opacity: 0,
+            x: 40,
+        },
+        visible: {
+            opacity: 1,
+            x: 0,
+            transition: {
+                duration: 0.8,
+                ease: "easeOut",
+            },
+        },
+    };
+
+    const cardVariants = {
+        hidden: {
+            opacity: 0,
+            y: 25,
+        },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.6,
+                ease: "easeOut",
+            },
+        },
+    };
+
     return (
-        <section className="relative overflow-hidden bg-white text-black">
-
-            {/* Background Glow Effects */}
+        <section className="relative isolate overflow-hidden bg-white text-black">
+            {/* Animated Background Effects */}
             <motion.div
+                aria-hidden="true"
+                initial={{ opacity: 0, scale: 0.8 }}
                 animate={{
-                    scale: [1, 1.3, 1],
-                    opacity: [0.2, 0.5, 0.2],
+                    opacity: [0.12, 0.24, 0.12],
+                    scale: [1, 1.15, 1],
                 }}
                 transition={{
-                    duration: 6,
+                    duration: 9,
                     repeat: Infinity,
+                    ease: "easeInOut",
                 }}
-                className="absolute top-0 left-0 w-72 h-72 bg-[#009A9E]/10 blur-3xl rounded-full"
+                className="pointer-events-none absolute -left-24 -top-20 -z-10 h-80 w-80 rounded-full bg-[#009A9E]/20 blur-3xl"
             />
+
             <motion.div
+                aria-hidden="true"
+                initial={{ opacity: 0, scale: 0.8 }}
                 animate={{
-                    scale: [1.2, 1, 1.2],
-                    opacity: [0.15, 0.4, 0.15],
+                    opacity: [0.08, 0.2, 0.08],
+                    scale: [1.1, 1, 1.1],
                 }}
                 transition={{
-                    duration: 8,
+                    duration: 11,
                     repeat: Infinity,
+                    ease: "easeInOut",
                 }}
-                className="absolute bottom-0 right-0 w-96 h-96 bg-[#009A9E]/5 blur-3xl rounded-full"
+                className="pointer-events-none absolute -bottom-24 -right-20 -z-10 h-96 w-96 rounded-full bg-[#7ACED4]/30 blur-3xl"
             />
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-15 lg:py-20 relative z-10">
+            {/* Subtle Decorative Line */}
+            <motion.div
+                aria-hidden="true"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{
+                    duration: 1.2,
+                    ease: "easeOut",
+                }}
+                className="absolute left-0 top-0 h-1 w-full origin-left bg-gradient-to-r from-[#009A9E] via-[#7ACED4] to-transparent"
+            />
 
+            <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
                 <motion.div
-                    className="grid lg:grid-cols-2 gap-14 items-center"
+                    className="grid items-center gap-12 lg:grid-cols-2 lg:gap-14"
+                    variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: false, amount: 0.2 }} // Changed: once: false
+                    viewport={{
+                        once: true,
+                        amount: 0.15,
+                    }}
                 >
-
                     {/* LEFT CONTENT */}
                     <motion.div
                         variants={fadeLeft}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: false, amount: 0.25 }} // Changed: once: false
+                        className="min-w-0"
                     >
-
                         {/* Badge */}
-                        <div className="inline-flex items-center gap-2 bg-[#009A9E]/10 border border-[#009A9E]/20 text-[#009A9E] px-4 py-2 rounded-full text-sm font-medium mb-6 backdrop-blur-md">
-                            <TrendingUp size={16} />
-                            India’s Special Situations Opportunity
-                        </div>
-
-                        {/* Heading */}
-                        <motion.h1
-                            initial={{
-                                opacity: 0,
-                                y: 40,
+                        <motion.div
+                            variants={fadeUp}
+                            whileHover={{
+                                y: -2,
+                                scale: 1.02,
                             }}
-                            whileInView={{ // Changed: whileInView instead of animate
-                                opacity: 1,
-                                y: 0,
-                            }}
-                            viewport={{ once: false, amount: 0.3 }} // Added viewport
-                            transition={{
-                                delay: 0.3,
-                                duration: 0.8,
-                            }}
-                            className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight"
+                            className="mb-6 inline-flex max-w-full items-center gap-2 rounded-full border border-[#009A9E]/20 bg-[#009A9E]/10 px-4 py-2 text-sm font-medium text-[#007F83]"
                         >
-                            <span className="block mt-2">
+                            <TrendingUp
+                                size={16}
+                                className="shrink-0"
+                                aria-hidden="true"
+                            />
+                            <span>
+                                Sector Agnostic · Focused on India's Growth
+                            </span>
+                        </motion.div>
+
+                        {/* Main Heading */}
+                        <motion.h1
+                            variants={fadeUp}
+                            className="text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl"
+                        >
+                            <span className="block">
                                 Unlocking Value in
                             </span>
 
-                            <span className="block text-[#009A9E]">
-                                India’s Stressed
-                                Asset Ecosystem
-                            </span>
+                            <motion.span
+                                initial={{
+                                    opacity: 0,
+                                    y: 18,
+                                }}
+                                animate={{
+                                    opacity: 1,
+                                    y: 0,
+                                }}
+                                transition={{
+                                    duration: 0.8,
+                                    delay: 0.35,
+                                    ease: "easeOut",
+                                }}
+                                className="mt-2 block text-[#009A9E]"
+                            >
+                                India’s Stressed Asset Ecosystem
+                            </motion.span>
                         </motion.h1>
 
-                        {/* Paragraph */}
-                        <p className="mt-7 text-black-700 text-lg leading-8 max-w-2xl">
-                            INFIN Alpha LLP is a specialized alternative investment
-                            manager focused on distressed credit, special situations,
-                            restructuring opportunities, and high-yield private credit
-                            investments through Bharat Special Opportunity Fund (BSOF).
-                        </p>
+                        {/* Description */}
+                        <motion.p
+                            variants={fadeUp}
+                            className="mt-7 max-w-2xl text-base leading-8 text-gray-600 sm:text-lg"
+                        >
+                            Infin Alpha LLP is the Investment Manager of
+                            Bharat Special Opportunity Fund (BSOF), focused
+                            on special situations and stressed mid-market
+                            companies through structured credit, acquisitions,
+                            financial restructuring, turnaround and resolution
+                            strategies.
+                        </motion.p>
 
-                        {/* Stats */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-10">
-                            <div className="bg-white border border-gray-200 shadow-lg rounded-2xl p-5 backdrop-blur-sm col-span-2 sm:col-span-1">
-                                <h3 className="text-2xl font-bold text-[#009A9E]">
-                                    ₹8–12L Cr
-                                </h3>
-                                <p className="text-sm text-gray-600 mt-2">
-                                    Estimated Trapped Value Market
-                                </p>
-                            </div>
+                        {/* Fund Information Cards */}
+                        <motion.div
+                            variants={containerVariants}
+                            className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2"
+                        >
+                            {/* Corpus Card */}
+                            <motion.div
+                                variants={cardVariants}
+                                whileHover={{
+                                    y: -6,
+                                    transition: {
+                                        duration: 0.25,
+                                    },
+                                }}
+                                className="group rounded-2xl border border-gray-200 bg-white/90 p-5 shadow-sm transition-shadow duration-300 hover:border-[#009A9E]/40 hover:shadow-xl"
+                            >
+                                <div className="mb-3 flex items-center gap-3">
+                                    <motion.div
+                                        whileHover={{
+                                            rotate: 5,
+                                            scale: 1.08,
+                                        }}
+                                        className="rounded-xl bg-[#009A9E]/10 p-2.5"
+                                    >
+                                        <Landmark
+                                            size={22}
+                                            className="text-[#009A9E]"
+                                            aria-hidden="true"
+                                        />
+                                    </motion.div>
 
-                            <div className="bg-white border border-gray-200 shadow-lg rounded-2xl p-5 backdrop-blur-sm col-span-2 sm:col-span-1">
-                                <h3 className="text-2xl font-bold text-[#009A9E]">
-                                    Category II
-                                </h3>
-                                <p className="text-sm text-gray-600 mt-2">
-                                    SEBI Registered AIF Structure
+                                    <p className="text-sm font-medium text-gray-500">
+                                        Fund Corpus
+                                    </p>
+                                </div>
+
+                                <h2 className="text-2xl font-bold text-[#009A9E]">
+                                    ₹500 Cr
+                                </h2>
+
+                                <p className="mt-2 text-sm leading-6 text-gray-600">
+                                    With a green-shoe option of ₹500 Cr
                                 </p>
-                            </div>
-                        </div>
+                            </motion.div>
+
+                            {/* Fund Structure Card */}
+                            <motion.div
+                                variants={cardVariants}
+                                whileHover={{
+                                    y: -6,
+                                    transition: {
+                                        duration: 0.25,
+                                    },
+                                }}
+                                className="group rounded-2xl border border-gray-200 bg-white/90 p-5 shadow-sm transition-shadow duration-300 hover:border-[#009A9E]/40 hover:shadow-xl"
+                            >
+                                <div className="mb-3 flex items-center gap-3">
+                                    <motion.div
+                                        whileHover={{
+                                            rotate: -5,
+                                            scale: 1.08,
+                                        }}
+                                        className="rounded-xl bg-[#009A9E]/10 p-2.5"
+                                    >
+                                        <ShieldCheck
+                                            size={22}
+                                            className="text-[#009A9E]"
+                                            aria-hidden="true"
+                                        />
+                                    </motion.div>
+
+                                    <p className="text-sm font-medium text-gray-500">
+                                        Fund Structure
+                                    </p>
+                                </div>
+
+                                <h2 className="text-2xl font-bold text-[#009A9E]">
+                                    Category II AIF
+                                </h2>
+
+                                <p className="mt-2 text-sm leading-6 text-gray-600">
+                                    SEBI Registration No.
+                                </p>
+
+                                <p className="break-all text-sm font-semibold text-gray-800">
+                                    IN/AIF2/26-27/2127
+                                </p>
+                            </motion.div>
+                        </motion.div>
 
                         {/* CTA Buttons */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-10">
-                            {/* Strategy Opportunities Button */}
+                        <motion.div
+                            variants={fadeUp}
+                            className="mt-9 flex flex-col gap-4 sm:flex-row"
+                        >
                             <motion.div
                                 whileHover={{
-                                    scale: 1.05,
+                                    y: -3,
+                                    scale: 1.02,
                                 }}
                                 whileTap={{
-                                    scale: 0.95,
+                                    scale: 0.97,
                                 }}
+                                className="w-full sm:w-auto"
                             >
                                 <Link
                                     href="/investment/strategy-opportunities"
-                                    className="inline-flex items-center gap-2 bg-[#009A9E] hover:bg-[#ffffff] text-black px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-[#009A9E]/25"
+                                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#009A9E] px-6 py-3.5 font-semibold text-white shadow-md shadow-[#009A9E]/20 transition-colors duration-300 hover:bg-[#007F83] sm:w-auto"
                                 >
                                     Explore Opportunities
-                                    <ArrowRight size={18} />
+
+                                    <motion.span
+                                        animate={{ x: [0, 4, 0] }}
+                                        transition={{
+                                            duration: 1.5,
+                                            repeat: Infinity,
+                                            repeatDelay: 1,
+                                            ease: "easeInOut",
+                                        }}
+                                        className="inline-flex"
+                                    >
+                                        <ArrowRight
+                                            size={18}
+                                            aria-hidden="true"
+                                        />
+                                    </motion.span>
                                 </Link>
                             </motion.div>
 
-                            {/* Performance Button */}
                             <motion.div
                                 whileHover={{
-                                    scale: 1.05,
+                                    y: -3,
+                                    scale: 1.02,
                                 }}
                                 whileTap={{
-                                    scale: 0.95,
+                                    scale: 0.97,
                                 }}
+                                className="w-full sm:w-auto"
                             >
                                 <Link
-                                    href="/investment/performance"
-                                    className="inline-flex items-center gap-2 border border-[#009A9E] text-[#009A9E] hover:bg-[#009A9E] hover:text-black px-6 py-3 rounded-xl font-semibold transition-all duration-300"
+                                    href="/track-record"
+                                    className="inline-flex w-full items-center justify-center rounded-xl border border-[#009A9E] bg-white px-6 py-3.5 font-semibold text-[#007F83] transition-colors duration-300 hover:bg-[#009A9E]/10 sm:w-auto"
                                 >
-                                    View Performance
+                                    View Track Record
                                 </Link>
                             </motion.div>
-                        </div>
+                        </motion.div>
                     </motion.div>
 
                     {/* RIGHT CONTENT */}
                     <motion.div
-                        className="relative"
                         variants={fadeRight}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: false, amount: 0.25 }} // Changed: once: false
+                        className="relative min-w-0"
                     >
-                        {/* Main Card */}
+                        {/* Floating Fund Card */}
                         <motion.div
                             animate={{
-                                y: [0, -10, 0],
+                                y: [0, -7, 0],
                             }}
                             transition={{
-                                duration: 5,
+                                duration: 6,
                                 repeat: Infinity,
                                 ease: "easeInOut",
                             }}
-                            className="relative bg-white border border-gray-200 rounded-3xl p-8 backdrop-blur-xl shadow-2xl"
+                            className="relative rounded-3xl border border-gray-200/80 bg-white/95 p-6 shadow-xl shadow-[#00314A]/5 backdrop-blur-sm sm:p-8"
                         >
-                            {/* Top Label */}
-                            <div className="flex items-center justify-between mb-8">
-                                <div>
-                                    <p className="text-sm text-gray-600">
+                            {/* Decorative Accent */}
+                            <motion.div
+                                initial={{
+                                    scaleX: 0,
+                                }}
+                                whileInView={{
+                                    scaleX: 1,
+                                }}
+                                viewport={{
+                                    once: true,
+                                }}
+                                transition={{
+                                    duration: 0.8,
+                                    delay: 0.3,
+                                }}
+                                className="absolute left-6 right-6 top-0 h-1 origin-left rounded-full bg-gradient-to-r from-[#009A9E] to-[#7ACED4] sm:left-8 sm:right-8"
+                            />
+
+                            {/* Fund Identity */}
+                            <div className="mb-8 flex items-start justify-between gap-4">
+                                <div className="min-w-0">
+                                    <p className="text-sm font-medium text-[#009A9E]">
                                         Bharat Special Opportunity Fund
                                     </p>
-                                    <h3 className="text-2xl font-bold mt-2">
-                                        Special Situation Private Credit Fund
-                                    </h3>
+
+                                    <h2 className="mt-2 text-2xl font-bold leading-snug text-gray-900 sm:text-3xl">
+                                        Investing in Distressed.
+
+                                        <span className="block text-[#009A9E]">
+                                            Creating Value.
+                                        </span>
+
+                                        <span className="block">
+                                            Building Tomorrow.
+                                        </span>
+                                    </h2>
                                 </div>
 
                                 <motion.div
                                     animate={{
-                                        scale: [1, 1.1, 1],
-                                        rotate: [0, 5, 0],
+                                        y: [0, -4, 0],
+                                        rotate: [0, 3, 0],
                                     }}
                                     transition={{
-                                        duration: 3,
+                                        duration: 4,
                                         repeat: Infinity,
+                                        ease: "easeInOut",
                                     }}
-                                    className="bg-[#009A9E]/10 border border-[#009A9E]/20 p-4 rounded-2xl"
+                                    className="shrink-0 rounded-2xl border border-[#009A9E]/20 bg-[#009A9E]/10 p-3 sm:p-4"
                                 >
-                                    <Landmark className="text-[#7ACED4]" size={28} />
+                                    <Landmark
+                                        size={28}
+                                        className="text-[#009A9E]"
+                                        aria-hidden="true"
+                                    />
                                 </motion.div>
                             </div>
 
-                            {/* Opportunity Cards */}
-                            <div className="space-y-5">
+                            {/* Investment Approach */}
+                            <motion.div
+                                variants={containerVariants}
+                                className="space-y-4"
+                            >
+                                {/* Structured Credit */}
                                 <motion.div
+                                    variants={cardVariants}
                                     whileHover={{
-                                        y: -8,
-                                        scale: 1.02,
+                                        x: 4,
+                                        transition: {
+                                            duration: 0.2,
+                                        },
                                     }}
-                                    transition={{
-                                        duration: 0.3,
-                                    }}
-                                    className="flex items-start gap-4 bg-white border border-gray-200 shadow-lg rounded-2xl p-5"
+                                    className="flex items-start gap-4 rounded-2xl border border-gray-200 bg-white p-4 transition-colors duration-300 hover:border-[#009A9E]/40 sm:p-5"
                                 >
-                                    <div className="bg-[#009A9E]/10 p-3 rounded-xl">
-                                        <ShieldCheck className="text-[#7ACED4]" size={22} />
+                                    <div className="shrink-0 rounded-xl bg-[#009A9E]/10 p-3">
+                                        <ShieldCheck
+                                            size={22}
+                                            className="text-[#009A9E]"
+                                            aria-hidden="true"
+                                        />
                                     </div>
 
                                     <div>
-                                        <h4 className="font-semibold text-lg">
-                                            Stressed Credit Opportunities
-                                        </h4>
+                                        <h3 className="text-base font-semibold text-gray-900 sm:text-lg">
+                                            Structured Credit
+                                        </h3>
 
-                                        <p className="text-gray-600 text-sm mt-2 leading-6">
-                                            Investing across distressed corporate debt,
-                                            restructuring situations, and litigation-backed assets.
+                                        <p className="mt-2 text-sm leading-6 text-gray-600">
+                                            Secured financing through
+                                            structured credit instruments,
+                                            including secured NCDs.
                                         </p>
                                     </div>
                                 </motion.div>
 
+                                {/* Special Situations */}
                                 <motion.div
+                                    variants={cardVariants}
                                     whileHover={{
-                                        y: -8,
-                                        scale: 1.02,
+                                        x: 4,
+                                        transition: {
+                                            duration: 0.2,
+                                        },
                                     }}
-                                    transition={{
-                                        duration: 0.3,
-                                    }}
-                                    className="flex items-start gap-4 bg-white border border-gray-200 shadow-lg rounded-2xl p-5"
+                                    className="flex items-start gap-4 rounded-2xl border border-gray-200 bg-white p-4 transition-colors duration-300 hover:border-[#009A9E]/40 sm:p-5"
                                 >
-                                    <div className="bg-[#009A9E]/10 p-3 rounded-xl">
-                                        <TrendingUp className="text-[#7ACED4]" size={22} />
+                                    <div className="shrink-0 rounded-xl bg-[#009A9E]/10 p-3">
+                                        <TrendingUp
+                                            size={22}
+                                            className="text-[#009A9E]"
+                                            aria-hidden="true"
+                                        />
                                     </div>
 
                                     <div>
-                                        <h4 className="font-semibold text-lg">
-                                            High Yield Investment Strategy
-                                        </h4>
+                                        <h3 className="text-base font-semibold text-gray-900 sm:text-lg">
+                                            Special Situations
+                                        </h3>
 
-                                        <p className="text-gray-600 text-sm mt-2 leading-6">
-                                            Deep discount acquisitions combined with
-                                            turnaround-focused value creation strategies.
+                                        <p className="mt-2 text-sm leading-6 text-gray-600">
+                                            Targeting stressed assets,
+                                            financial restructuring,
+                                            turnaround opportunities and
+                                            resolution-led value creation.
                                         </p>
                                     </div>
                                 </motion.div>
-                            </div>
+                            </motion.div>
 
-                            {/* Bottom Stats */}
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-                                <motion.div
-                                    whileHover={{
-                                        scale: 1.05,
-                                        y: -5,
-                                    }}
-                                    transition={{
-                                        duration: 0.3,
-                                    }}
-                                    className="bg-[#EAF9FA] border border-[#009A9E]/20 rounded-2xl p-5"
-                                >
-                                    <p className="text-sm text-gray-600">
-                                        Target Corpus
-                                    </p>
+                            {/* Fund Tenure */}
+                            <motion.div
+                                variants={fadeUp}
+                                whileHover={{
+                                    y: -3,
+                                    transition: {
+                                        duration: 0.2,
+                                    },
+                                }}
+                                className="mt-6 rounded-2xl border border-[#009A9E]/20 bg-[#EAF9FA] p-5"
+                            >
+                                <p className="text-sm font-medium text-gray-600">
+                                    Fund Tenure
+                                </p>
 
-                                    <h3 className="text-3xl font-bold mt-2">
-                                        ₹1000 Cr
-                                    </h3>
-                                </motion.div>
+                                <div className="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                                    <span className="text-3xl font-bold text-gray-900">
+                                        5 Years
+                                    </span>
 
-                                <motion.div
-                                    whileHover={{
-                                        scale: 1.05,
-                                        y: -5,
-                                    }}
-                                    transition={{
-                                        duration: 0.3,
-                                    }}
-                                    className="bg-[#EAF9FA] border border-[#009A9E]/20 rounded-2xl p-5"
-                                >
-                                    <p className="text-sm text-gray-600">
-                                        Investment Horizon
-                                    </p>
+                                    <span className="text-sm text-gray-600">
+                                        + extension option of 1+1 years*
+                                    </span>
+                                </div>
 
-                                    <h3 className="text-3xl font-bold mt-2">
-                                        5+ Years
-                                    </h3>
-                                </motion.div>
-                            </div>
+                                <p className="mt-2 text-xs leading-5 text-gray-500">
+                                    *Subject to applicable fund terms and
+                                    extension conditions.
+                                </p>
+                            </motion.div>
                         </motion.div>
+
+                        {/* Floating Decorative Dot */}
+                        <motion.div
+                            aria-hidden="true"
+                            animate={{
+                                y: [0, -10, 0],
+                                opacity: [0.5, 1, 0.5],
+                            }}
+                            transition={{
+                                duration: 4,
+                                repeat: Infinity,
+                                ease: "easeInOut",
+                            }}
+                            className="pointer-events-none absolute -right-3 top-16 h-5 w-5 rounded-full bg-[#009A9E]/30 blur-[1px] sm:-right-5"
+                        />
                     </motion.div>
                 </motion.div>
             </div>
-        </section >
+        </section>
     );
 }

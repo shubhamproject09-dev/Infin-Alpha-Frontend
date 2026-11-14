@@ -1,3 +1,4 @@
+
 "use client";
 
 import {
@@ -5,68 +6,73 @@ import {
     Network,
     TrendingUp,
     BriefcaseBusiness,
-    ChartNoAxesCombined,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function WhyTrustUsSection() {
-
     const trustPoints = [
         {
-            icon: <BriefcaseBusiness size={24} />,
+            icon: BriefcaseBusiness,
             title: "Industry Knowledge",
             description:
-                "Deep expertise across stressed assets, restructuring, private credit, and special situations investing.",
+                "Deep expertise in special situation and stressed asset resolution, debt restructuring, IBC-led recoveries, and strategic high-yield equity deals.",
         },
         {
-            icon: <Network size={24} />,
-            title: "Institutional Network",
+            icon: Network,
+            title: "Strong Sourcing Network",
             description:
-                "Strong relationships with banks, ARCs, legal advisors, and institutional participants.",
+                "Established relationships with banks, Asset Reconstruction Companies (ARCs), resolution professionals, and institutional investors to source stressed asset opportunities.",
         },
         {
-            icon: <TrendingUp size={24} />,
+            icon: TrendingUp,
             title: "Micro-Trend Intelligence",
             description:
-                "Identifying turnaround-ready opportunities before broader market participation.",
+                "Identifying turnaround-ready companies and recognising opportunities arising from systemic dislocations in credit markets.",
         },
         {
-            icon: <ChartNoAxesCombined size={24} />,
-            title: "Experienced Leadership",
-            description:
-                "Decades of experience across distressed investing and strategic resolutions.",
-        },
-        {
-            icon: <ShieldCheck size={24} />,
+            icon: ShieldCheck,
             title: "Disciplined Risk Management",
             description:
-                "Structured investment processes focused on downside protection and recovery execution.",
+                "A disciplined investment process focused on structured entry, recovery-oriented exit strategies, and robust downside protection.",
         },
     ];
 
-    // Animation variants
     const fadeUp = {
         hidden: {
             opacity: 0,
-            y: 60,
+            y: 35,
         },
         visible: {
             opacity: 1,
             y: 0,
             transition: {
-                duration: 0.8,
+                duration: 0.7,
                 ease: "easeOut",
             },
         },
     };
 
-    const staggerContainer = {
-        hidden: { opacity: 0 },
+    const fadeLeft = {
+        hidden: {
+            opacity: 0,
+            x: -40,
+        },
         visible: {
             opacity: 1,
+            x: 0,
             transition: {
-                staggerChildren: 0.15,
-                delayChildren: 0.2,
+                duration: 0.75,
+                ease: [0.22, 1, 0.36, 1],
+            },
+        },
+    };
+
+    const staggerContainer = {
+        hidden: {},
+        visible: {
+            transition: {
+                staggerChildren: 0.14,
+                delayChildren: 0.1,
             },
         },
     };
@@ -74,248 +80,301 @@ export default function WhyTrustUsSection() {
     const cardVariants = {
         hidden: {
             opacity: 0,
-            y: 50,
-            scale: 0.9,
+            y: 35,
+            scale: 0.96,
         },
         visible: {
             opacity: 1,
             y: 0,
             scale: 1,
             transition: {
-                duration: 0.7,
+                duration: 0.65,
                 ease: [0.22, 1, 0.36, 1],
             },
         },
     };
 
     return (
-        <section className="relative overflow-hidden py-20 sm:py-24 lg:py-32">
-
+        <section className="relative isolate overflow-hidden bg-[#00314A] py-20 text-white sm:py-24 lg:py-28">
             {/* BACKGROUND IMAGE */}
             <motion.div
-                initial={{ scale: 1.1, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
-                className="absolute inset-0 bg-cover bg-center"
+                aria-hidden="true"
+                initial={{ scale: 1.06, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                    duration: 1.4,
+                    ease: "easeOut",
+                }}
+                className="pointer-events-none absolute inset-0 -z-30 bg-cover bg-center"
                 style={{
                     backgroundImage:
                         "url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=2070&auto=format&fit=crop')",
                 }}
-            ></motion.div>
+            />
 
             {/* DARK OVERLAY */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1 }}
-                className="absolute inset-0 bg-[#00314A]/95"
-            ></motion.div>
+            <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 -z-20 bg-[#00314A]/95"
+            />
 
-            {/* GREEN GLOW */}
+            {/* ANIMATED BACKGROUND GLOW */}
             <motion.div
+                aria-hidden="true"
                 animate={{
-                    scale: [1, 1.2, 1],
-                    opacity: [0.1, 0.2, 0.1],
+                    scale: [1, 1.18, 1],
+                    opacity: [0.12, 0.25, 0.12],
                 }}
                 transition={{
-                    duration: 6,
+                    duration: 8,
                     repeat: Infinity,
                     ease: "easeInOut",
                 }}
-                className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#009A9E]/10 blur-3xl rounded-full"
+                className="pointer-events-none absolute -left-32 top-0 -z-10 h-[450px] w-[450px] rounded-full bg-[#009A9E]/30 blur-3xl"
             />
 
-            <div className="relative z-10">
-                <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+                aria-hidden="true"
+                animate={{
+                    scale: [1.1, 1, 1.1],
+                    opacity: [0.08, 0.18, 0.08],
+                }}
+                transition={{
+                    duration: 10,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                }}
+                className="pointer-events-none absolute -bottom-40 -right-20 -z-10 h-[450px] w-[450px] rounded-full bg-[#7ACED4]/20 blur-3xl"
+            />
 
-                    {/* TOP CONTENT */}
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                {/* SECTION INTRO */}
+                <motion.div
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{
+                        once: true,
+                        amount: 0.2,
+                    }}
+                    className="mx-auto max-w-4xl text-left lg:text-center"
+                >
+                    {/* Badge */}
                     <motion.div
-                        className="max-w-5xl mx-auto text-left lg:text-center"
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: false, amount: 0.2 }}
+                        variants={fadeUp}
+                        className="inline-flex items-center gap-2 rounded-full border border-[#7ACED4]/25 bg-[#009A9E]/10 px-4 py-2 text-sm font-medium text-[#7ACED4] backdrop-blur-md"
                     >
-                        {/* Badge */}
-                        <motion.div
-                            variants={fadeUp}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: false, amount: 0.3 }}
-                            className="inline-flex items-center gap-2 rounded-full border border-[#009A9E]/20 bg-[#009A9E]/10 px-4 py-2 text-sm font-medium text-[#7ACED4] backdrop-blur-md"
-                        >
-                            <motion.div
-                                animate={{
-                                    scale: [1, 1.5, 1],
-                                    opacity: [1, 0.5, 1],
-                                }}
-                                transition={{
-                                    duration: 2,
-                                    repeat: Infinity,
-                                }}
-                                className="w-2 h-2 rounded-full bg-[#7ACED4]"
-                            ></motion.div>
-                            Why Investors Trust INFIN Alpha
-                        </motion.div>
-
-                        {/* Heading */}
-                        <motion.h2
-                            initial={{
-                                opacity: 0,
-                                y: 40,
+                        <motion.span
+                            animate={{
+                                scale: [1, 1.35, 1],
+                                opacity: [1, 0.55, 1],
                             }}
-                            whileInView={{
-                                opacity: 1,
-                                y: 0,
-                            }}
-                            viewport={{ once: false, amount: 0.3 }}
                             transition={{
-                                delay: 0.3,
-                                duration: 0.8,
+                                duration: 2,
+                                repeat: Infinity,
+                                ease: "easeInOut",
                             }}
-                            className="mt-8 text-3xl sm:text-3xl lg:text-4xl font-bold text-white leading-[1.5] tracking-tight"
-                        >
-                            Experience, Insight &
-                            Strategic Relationships
-                            That Drive Better Outcomes
-                        </motion.h2>
+                            className="h-2 w-2 rounded-full bg-[#7ACED4]"
+                        />
 
-                        {/* Paragraph */}
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: false, amount: 0.3 }}
-                            transition={{ delay: 0.5, duration: 0.7 }}
-                            className="mt-8 max-w-3xl lg:mx-auto text-base sm:text-lg leading-8 text-slate-300"
-                        >
-                            INFIN Alpha combines institutional expertise,
-                            restructuring intelligence, and strong market
-                            relationships to identify and execute high-conviction
-                            special situation opportunities across India's evolving
-                            credit landscape.
-                        </motion.p>
+                        Why Trust INFIN Alpha
                     </motion.div>
 
-                    {/* SLIDER STYLE CARDS */}
-                    <motion.div
-                        className="mt-16 lg:mt-20 overflow-hidden"
-                        variants={staggerContainer}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: false, amount: 0.1 }}
+                    {/* Heading */}
+                    <motion.h2
+                        variants={fadeUp}
+                        className="mt-7 text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl"
                     >
-                        <div
-                            className="flex gap-6 w-max animate-scroll"
-                            suppressHydrationWarning
+                        Expertise That Drives{" "}
+                        <span className="text-[#7ACED4]">
+                            Special Situation
+                        </span>{" "}
+                        Investing
+                    </motion.h2>
+
+                    {/* Description */}
+                    <motion.p
+                        variants={fadeUp}
+                        className="mx-0 mt-6 max-w-3xl text-base leading-8 text-slate-300 lg:mx-auto sm:text-lg"
+                    >
+                        INFIN Alpha's investment approach is built around
+                        stressed asset expertise, institutional sourcing
+                        relationships, the identification of turnaround
+                        opportunities, and disciplined risk management.
+                        These capabilities support the evaluation and
+                        execution of complex investment situations.
+                    </motion.p>
+                </motion.div>
+
+                {/* TRUST CARDS SLIDER */}
+                <div className="relative mt-14 sm:mt-16 lg:mt-20">
+                    {/* Subtle Slider Edge Effects */}
+                    <div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-12 bg-gradient-to-r from-[#00314A] to-transparent sm:block lg:w-20"
+                    />
+
+                    <div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-12 bg-gradient-to-l from-[#00314A] to-transparent sm:block lg:w-20"
+                    />
+
+                    <div className="overflow-hidden py-4">
+                        <motion.div
+                            className="flex w-max gap-5 sm:gap-6"
+                            animate={{
+                                x: ["0%", "-50%"],
+                            }}
+                            transition={{
+                                duration: 36,
+                                ease: "linear",
+                                repeat: Infinity,
+                            }}
+                            whileHover={{
+                                animationPlayState: "paused",
+                            }}
+                            style={{
+                                willChange: "transform",
+                            }}
                         >
-                            {[...trustPoints, ...trustPoints, ...trustPoints].map((item, index) => {
-                                const originalIndex = index % trustPoints.length;
-                                return (
-                                    <motion.div
-                                        key={index}
-                                        variants={cardVariants}
-                                        whileHover={{
-                                            y: -12,
-                                            scale: 1.03,
-                                            borderColor: "rgba(0,154,158,0.3)",
-                                            transition: { duration: 0.3 },
-                                        }}
-                                        className="group relative w-[280px] sm:w-[300px] lg:w-[320px] min-h-[320px] rounded-[32px] border border-white/10 bg-white/[0.04] backdrop-blur-2xl p-8 flex flex-col justify-between overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:border-[#009A9E]/30 flex-shrink-0"
-                                    >
-                                        {/* Glow */}
-                                        <motion.div
-                                            animate={{
-                                                scale: [1, 1.2, 1],
-                                                opacity: [0, 0.3, 0],
-                                            }}
-                                            transition={{
-                                                duration: 3,
-                                                repeat: Infinity,
-                                                delay: index * 0.1,
-                                            }}
-                                            className="absolute top-0 right-0 w-40 h-40 bg-[#009A9E]/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition duration-500"
-                                        />
+                            {[...trustPoints, ...trustPoints].map(
+                                (item, index) => {
+                                    const Icon = item.icon;
+                                    const originalIndex =
+                                        index % trustPoints.length;
 
-                                        {/* Number */}
-                                        <motion.div
-                                            initial={{ opacity: 0, scale: 0.5 }}
-                                            whileInView={{ opacity: 1, scale: 1 }}
-                                            viewport={{ once: false, amount: 0.3 }}
-                                            transition={{ delay: 0.2 + originalIndex * 0.1, duration: 0.5 }}
-                                            className="absolute top-6 right-6 text-6xl font-bold text-white/5"
+                                    return (
+                                        <motion.article
+                                            key={`${item.title}-${index}`}
+                                            variants={cardVariants}
+                                            initial="hidden"
+                                            whileInView="visible"
+                                            viewport={{
+                                                once: true,
+                                                amount: 0.15,
+                                            }}
+                                            whileHover={{
+                                                y: -8,
+                                                borderColor:
+                                                    "rgba(122,206,212,0.4)",
+                                                transition: {
+                                                    duration: 0.25,
+                                                },
+                                            }}
+                                            className="group relative flex min-h-[340px] w-[285px] shrink-0 flex-col justify-between overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.045] p-6 backdrop-blur-xl transition-colors duration-300 hover:bg-white/[0.08] sm:w-[310px] sm:p-7 lg:w-[330px] lg:rounded-[32px]"
                                         >
-                                            0{originalIndex + 1}
-                                        </motion.div>
-
-                                        <div className="relative z-10">
-                                            {/* Icon */}
+                                            {/* Card Glow */}
                                             <motion.div
-                                                whileHover={{
-                                                    rotate: [0, -10, 10, -5, 5, 0],
-                                                    scale: 1.1,
-                                                    transition: { duration: 0.5 },
+                                                aria-hidden="true"
+                                                animate={{
+                                                    opacity: [
+                                                        0.03,
+                                                        0.12,
+                                                        0.03,
+                                                    ],
+                                                    scale: [1, 1.15, 1],
                                                 }}
-                                                className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#009A9E] to-[#00314A] text-white flex items-center justify-center shadow-xl shadow-[#009A9E]/20"
+                                                transition={{
+                                                    duration: 5,
+                                                    repeat: Infinity,
+                                                    ease: "easeInOut",
+                                                    delay:
+                                                        originalIndex * 0.4,
+                                                }}
+                                                className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-[#009A9E]/40 blur-3xl"
+                                            />
+
+                                            {/* Card Number */}
+                                            <span
+                                                aria-hidden="true"
+                                                className="absolute right-5 top-4 text-6xl font-bold text-white/[0.055] transition-colors duration-300 group-hover:text-[#7ACED4]/10"
                                             >
-                                                {item.icon}
-                                            </motion.div>
+                                                {String(
+                                                    originalIndex + 1
+                                                ).padStart(2, "0")}
+                                            </span>
 
-                                            {/* Title */}
-                                            <motion.h3
-                                                initial={{ opacity: 0, y: 20 }}
-                                                whileInView={{ opacity: 1, y: 0 }}
-                                                viewport={{ once: false, amount: 0.3 }}
-                                                transition={{ delay: 0.3 + originalIndex * 0.1, duration: 0.6 }}
-                                                className="mt-10 text-2xl font-bold text-white leading-snug"
-                                            >
-                                                {item.title}
-                                            </motion.h3>
+                                            <div className="relative z-10">
+                                                {/* Icon */}
+                                                <motion.div
+                                                    whileHover={{
+                                                        scale: 1.08,
+                                                        rotate: 4,
+                                                    }}
+                                                    transition={{
+                                                        duration: 0.25,
+                                                    }}
+                                                    className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[#7ACED4]/20 bg-gradient-to-br from-[#009A9E] to-[#00314A] text-[#7ACED4] shadow-lg shadow-[#009A9E]/10"
+                                                >
+                                                    <Icon
+                                                        size={25}
+                                                        strokeWidth={1.8}
+                                                        aria-hidden="true"
+                                                    />
+                                                </motion.div>
 
-                                            {/* Description */}
-                                            <motion.p
-                                                initial={{ opacity: 0, y: 20 }}
-                                                whileInView={{ opacity: 1, y: 0 }}
-                                                viewport={{ once: false, amount: 0.3 }}
-                                                transition={{ delay: 0.4 + originalIndex * 0.1, duration: 0.6 }}
-                                                className="mt-6 text-slate-300 leading-8 text-sm sm:text-base"
-                                            >
-                                                {item.description}
-                                            </motion.p>
-                                        </div>
+                                                {/* Title */}
+                                                <h3 className="mt-7 text-xl font-bold leading-snug text-white sm:text-2xl">
+                                                    {item.title}
+                                                </h3>
 
-                                        {/* Bottom Line */}
-                                        <motion.div
-                                            initial={{ scaleX: 0, opacity: 0 }}
-                                            whileInView={{ scaleX: 1, opacity: 1 }}
-                                            viewport={{ once: false, amount: 0.3 }}
-                                            transition={{ delay: 0.5 + originalIndex * 0.1, duration: 0.8 }}
-                                            className="relative z-10 mt-10 w-full h-px bg-gradient-to-r from-[#009A9E]/40 to-transparent origin-left"
-                                        />
-                                    </motion.div>
-                                );
-                            })}
-                        </div>
-                    </motion.div>
+                                                {/* Description */}
+                                                <p className="mt-4 text-sm leading-7 text-slate-300 sm:text-base">
+                                                    {item.description}
+                                                </p>
+                                            </div>
 
+                                            {/* Bottom Accent */}
+                                            <div className="relative z-10 mt-7 h-px w-full origin-left bg-gradient-to-r from-[#009A9E]/70 via-[#7ACED4]/30 to-transparent" />
+                                        </motion.article>
+                                    );
+                                }
+                            )}
+                        </motion.div>
+                    </div>
                 </div>
-            </div>
 
-            {/* Add CSS for animation if not already present */}
-            <style jsx>{`
-                @keyframes scroll {
-                    0% {
-                        transform: translateX(0);
-                    }
-                    100% {
-                        transform: translateX(-33.33%);
-                    }
-                }
-                .animate-scroll {
-                    animation: scroll 30s linear infinite;
-                }
-                .animate-scroll:hover {
-                    animation-play-state: paused;
-                }
-            `}</style>
+                {/* BOTTOM TRUST PILLARS */}
+                <motion.div
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{
+                        once: true,
+                        amount: 0.2,
+                    }}
+                    className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4"
+                >
+                    {[
+                        "Industry Expertise",
+                        "Institutional Relationships",
+                        "Turnaround Opportunity Identification",
+                        "Downside Protection Focus",
+                    ].map((item) => (
+                        <motion.div
+                            key={item}
+                            variants={cardVariants}
+                            whileHover={{
+                                y: -4,
+                                borderColor:
+                                    "rgba(122,206,212,0.35)",
+                            }}
+                            className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.035] px-4 py-4 transition-colors duration-300"
+                        >
+                            <ShieldCheck
+                                size={19}
+                                className="shrink-0 text-[#7ACED4]"
+                                aria-hidden="true"
+                            />
+
+                            <span className="text-sm font-medium leading-6 text-slate-200">
+                                {item}
+                            </span>
+                        </motion.div>
+                    ))}
+                </motion.div>
+            </div>
         </section>
     );
 }

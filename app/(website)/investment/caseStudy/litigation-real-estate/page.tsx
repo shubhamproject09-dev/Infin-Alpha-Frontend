@@ -1,5 +1,5 @@
-import Litigation from "@/components/Investment/caseStudy/Litigation-Real/Litigation-Real";
+// import Litigation from "@/components/Investment/caseStudy/Litigation-Real/Litigation-Real";
 
-export default function Page() {
-    return <Litigation />;
-}
+// export default function Page() {
+//     return <Litigation />;
+// }

@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -5,54 +6,37 @@ import {
     ArrowUpRight,
     ShieldCheck,
     TrendingUp,
+    Building2,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function CTASection() {
+    const ease = [0.22, 1, 0.36, 1];
 
-    // Animation variants
     const fadeLeft = {
-        hidden: {
-            opacity: 0,
-            x: -80,
-        },
+        hidden: { opacity: 0, x: -50 },
         visible: {
             opacity: 1,
             x: 0,
-            transition: {
-                duration: 0.9,
-                ease: [0.22, 1, 0.36, 1],
-            },
+            transition: { duration: 0.8, ease },
         },
     };
 
     const fadeRight = {
-        hidden: {
-            opacity: 0,
-            x: 80,
-        },
+        hidden: { opacity: 0, x: 50 },
         visible: {
             opacity: 1,
             x: 0,
-            transition: {
-                duration: 0.9,
-                ease: [0.22, 1, 0.36, 1],
-            },
+            transition: { duration: 0.8, ease },
         },
     };
 
     const fadeUp = {
-        hidden: {
-            opacity: 0,
-            y: 60,
-        },
+        hidden: { opacity: 0, y: 25 },
         visible: {
             opacity: 1,
             y: 0,
-            transition: {
-                duration: 0.8,
-                ease: "easeOut",
-            },
+            transition: { duration: 0.65, ease },
         },
     };
 
@@ -62,287 +46,270 @@ export default function CTASection() {
             opacity: 1,
             transition: {
                 staggerChildren: 0.15,
-                delayChildren: 0.3,
+                delayChildren: 0.1,
             },
         },
     };
 
     const cardVariants = {
-        hidden: {
-            opacity: 0,
-            y: 40,
-            scale: 0.95,
-        },
+        hidden: { opacity: 0, y: 25 },
         visible: {
             opacity: 1,
             y: 0,
-            scale: 1,
-            transition: {
-                duration: 0.6,
-                ease: [0.22, 1, 0.36, 1],
-            },
+            transition: { duration: 0.65, ease },
         },
     };
 
     const buttonVariants = {
-        hidden: {
-            opacity: 0,
-            y: 30,
-            scale: 0.9,
-        },
+        hidden: { opacity: 0, y: 15 },
         visible: {
             opacity: 1,
             y: 0,
-            scale: 1,
-            transition: {
-                duration: 0.6,
-                ease: [0.22, 1, 0.36, 1],
-            },
+            transition: { duration: 0.5, ease },
         },
         hover: {
-            scale: 1.05,
-            transition: {
-                duration: 0.3,
-            },
+            y: -3,
+            transition: { duration: 0.25 },
         },
-        tap: {
-            scale: 0.95,
-        },
+        tap: { scale: 0.97 },
     };
 
+    const sectors = [
+        "Real Estate",
+        "Infrastructure",
+        "Manufacturing",
+        "Hospitality",
+        "Pharmaceuticals",
+        "Chemicals",
+    ];
+
     return (
-        <section className="relative overflow-hidden pb-20 bg-white">
-
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-                {/* MAIN BOX */}
+        <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-15">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                {/* MAIN CTA CONTAINER */}
                 <motion.div
-                    initial={{ opacity: 0, y: 60 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false, amount: 0.2 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="relative overflow-hidden rounded-[40px] bg-gradient-to-br from-[#00314A] via-[#0A3635] to-[#00314A] p-8 sm:p-10 lg:p-16"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.15 }}
+                    className="relative isolate overflow-hidden rounded-[28px] sm:rounded-[36px] bg-gradient-to-br from-[#00314A] via-[#0A3635] to-[#00314A] p-6 sm:p-10 lg:p-14"
                 >
-                    {/* Background Glow */}
+                    {/* BACKGROUND GLOWS */}
                     <motion.div
+                        aria-hidden="true"
                         animate={{
-                            scale: [1, 1.2, 1],
-                            opacity: [0.2, 0.4, 0.2],
-                        }}
-                        transition={{
-                            duration: 6,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                        }}
-                        className="absolute top-0 left-0 w-[400px] h-[400px] bg-[#009A9E]/20 blur-3xl rounded-full"
-                    />
-
-                    <motion.div
-                        animate={{
-                            scale: [1.2, 1, 1.2],
-                            opacity: [0.1, 0.3, 0.1],
+                            scale: [1, 1.15, 1],
+                            opacity: [0.12, 0.24, 0.12],
                         }}
                         transition={{
                             duration: 8,
                             repeat: Infinity,
                             ease: "easeInOut",
                         }}
-                        className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#7ACED4]/10 blur-3xl rounded-full"
+                        className="pointer-events-none absolute -left-28 -top-28 h-80 w-80 rounded-full bg-[#009A9E]/30 blur-3xl"
                     />
 
-                    <div className="relative z-10 grid lg:grid-cols-12 gap-12 items-center">
+                    <motion.div
+                        aria-hidden="true"
+                        animate={{
+                            scale: [1.1, 1, 1.1],
+                            opacity: [0.08, 0.18, 0.08],
+                        }}
+                        transition={{
+                            duration: 10,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                        }}
+                        className="pointer-events-none absolute -bottom-32 -right-20 h-96 w-96 rounded-full bg-[#7ACED4]/20 blur-3xl"
+                    />
 
-                        {/* LEFT SIDE */}
+                    {/* SUBTLE DECORATIVE BORDER */}
+                    <div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute inset-0 rounded-[inherit] border border-white/[0.08]"
+                    />
+
+                    <div className="relative z-10 grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
+                        {/* LEFT CONTENT */}
                         <motion.div
-                            className="lg:col-span-6"
                             variants={fadeLeft}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: false, amount: 0.3 }}
+                            className="lg:col-span-6"
                         >
-                            {/* Badge */}
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: false, amount: 0.3 }}
-                                transition={{ duration: 0.5, delay: 0.2 }}
-                                className="inline-flex items-center gap-2 rounded-full border border-[#009A9E]/20 bg-[#009A9E]/10 px-4 py-2 text-sm font-medium text-[#7ACED4] backdrop-blur-md"
-                            >
-                                Strategic Investment Opportunities
-                            </motion.div>
+                            {/* BADGE */}
+                            <div className="inline-flex items-center gap-2 rounded-full border border-[#7ACED4]/25 bg-[#009A9E]/10 px-4 py-2 text-xs font-semibold tracking-wide text-[#7ACED4] sm:text-sm">
+                                <span className="h-2 w-2 rounded-full bg-[#7ACED4]" />
+                                Bharat Special Opportunity Fund
+                            </div>
 
-                            {/* Heading */}
+                            {/* HEADING */}
                             <motion.h2
-                                initial={{
-                                    opacity: 0,
-                                    y: 40,
-                                }}
-                                whileInView={{
-                                    opacity: 1,
-                                    y: 0,
-                                }}
-                                viewport={{ once: false, amount: 0.3 }}
-                                transition={{
-                                    delay: 0.3,
-                                    duration: 0.8,
-                                }}
-                                className="mt-8 text-3xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight"
+                                variants={fadeUp}
+                                className="mt-6 max-w-2xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-[42px]"
                             >
-                                Partner with INFIN Alpha
-                                to Access India's Next
-                                Generation of Special
-                                Situation Investments
+                                Unlocking Value in{" "}
+                                <span className="text-[#7ACED4]">
+                                    Stressed &amp; Special Situation
+                                </span>{" "}
+                                Investments
                             </motion.h2>
 
-                            {/* Paragraph */}
+                            {/* DESCRIPTION */}
                             <motion.p
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: false, amount: 0.3 }}
-                                transition={{ delay: 0.5, duration: 0.7 }}
-                                className="mt-8 text-base sm:text-lg leading-8 text-slate-300 max-w-3xl"
+                                variants={fadeUp}
+                                className="mt-6 max-w-xl text-sm leading-7 text-slate-300 sm:text-base sm:leading-8"
                             >
-                                We focus on differentiated opportunities across
-                                distressed credit, restructuring, and strategic
-                                turnaround situations with institutional discipline,
-                                downside protection, and long-term value creation.
+                                Bharat Special Opportunity Fund (BSOF) targets
+                                stressed and special-situation mid-market
+                                companies through structured credit,
+                                acquisitions, turnarounds, and resolution
+                                strategies.
                             </motion.p>
+
+                            {/* SUPPORTING TEXT */}
+                            <motion.div
+                                variants={fadeUp}
+                                className="mt-6 flex gap-3"
+                            >
+                                <div className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[#009A9E]/30 bg-[#009A9E]/10 text-[#7ACED4]">
+                                    <TrendingUp size={19} />
+                                </div>
+
+                                <div>
+                                    <h3 className="text-sm font-semibold text-white sm:text-base">
+                                        Disciplined, Recovery-Focused Approach
+                                    </h3>
+
+                                    <p className="mt-1 text-sm leading-6 text-slate-400">
+                                        Seeking risk-adjusted returns through
+                                        restructuring, resolution, and
+                                        turnaround-led value creation.
+                                    </p>
+                                </div>
+                            </motion.div>
 
                             {/* CTA BUTTONS */}
                             <motion.div
-                                className="mt-10 flex flex-col sm:flex-row gap-4"
                                 variants={staggerContainer}
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: false, amount: 0.3 }}
+                                className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
                             >
-                                {/* Investment Philosophy */}
-                                <motion.div variants={buttonVariants}>
+                                <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
                                     <Link
                                         href="/investment/philosophy"
-                                        className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#009A9E] px-6 py-4 text-white font-semibold hover:bg-[#00314A] transition-all duration-300"
+                                        className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#009A9E] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-black/10 transition-colors duration-300 hover:bg-[#087D80] sm:w-auto sm:text-base"
                                     >
                                         Investment Philosophy
-                                        <ArrowUpRight size={18} />
+                                        <ArrowUpRight
+                                            size={18}
+                                            className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                                        />
                                     </Link>
                                 </motion.div>
 
-                                {/* Case Studies */}
-                                <motion.div variants={buttonVariants}>
+                                <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
                                     <Link
                                         href="/investment/caseStudy"
-                                        className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-white font-semibold hover:bg-white/10 transition-all duration-300 backdrop-blur-xl"
+                                        className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/[0.04] px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-colors duration-300 hover:border-[#7ACED4]/50 hover:bg-white/10 sm:w-auto sm:text-base"
                                     >
                                         Case Studies
+                                        <ArrowUpRight
+                                            size={18}
+                                            className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                                        />
                                     </Link>
                                 </motion.div>
                             </motion.div>
                         </motion.div>
 
-                        {/* RIGHT SIDE */}
+                        {/* RIGHT CONTENT */}
                         <motion.div
-                            className="lg:col-span-6"
                             variants={fadeRight}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: false, amount: 0.3 }}
+                            className="lg:col-span-6"
                         >
                             <motion.div
-                                className="grid grid-cols-1 sm:grid-cols-2 gap-5"
                                 variants={staggerContainer}
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: false, amount: 0.2 }}
+                                className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5"
                             >
-                                {/* CARD 2 */}
+                                {/* RISK MANAGEMENT CARD */}
                                 <motion.div
                                     variants={cardVariants}
-                                    whileHover={{
-                                        y: -8,
-                                        scale: 1.03,
-                                        transition: { duration: 0.3 },
-                                    }}
-                                    className="rounded-[28px] border border-white/10 bg-white/[0.04] backdrop-blur-xl p-6"
+                                    whileHover={{ y: -5 }}
+                                    className="rounded-2xl border border-white/10 bg-white/[0.045] p-5 backdrop-blur-md transition-colors duration-300 hover:border-[#7ACED4]/30 sm:p-6"
                                 >
-                                    <motion.div
-                                        whileHover={{
-                                            rotate: [0, -10, 10, -5, 5, 0],
-                                            scale: 1.1,
-                                            transition: { duration: 0.5 },
-                                        }}
-                                        className="w-12 h-12 rounded-2xl bg-[#009A9E]/10 border border-[#009A9E]/20 text-[#7ACED4] flex items-center justify-center"
-                                    >
-                                        <ShieldCheck size={22} />
-                                    </motion.div>
+                                    <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#009A9E]/25 bg-[#009A9E]/10 text-[#7ACED4]">
+                                        <ShieldCheck size={23} />
+                                    </div>
 
-                                    <motion.h3
-                                        initial={{ opacity: 0, y: 20 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: false, amount: 0.3 }}
-                                        transition={{ delay: 0.3, duration: 0.6 }}
-                                        className="mt-6 text-2xl font-bold text-white"
-                                    >
-                                        Risk Managed
-                                    </motion.h3>
+                                    <h3 className="mt-5 text-lg font-bold text-white sm:text-xl">
+                                        Risk Management
+                                    </h3>
 
-                                    <motion.p
-                                        initial={{ opacity: 0, y: 20 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: false, amount: 0.3 }}
-                                        transition={{ delay: 0.4, duration: 0.6 }}
-                                        className="mt-3 text-sm leading-7 text-slate-300"
-                                    >
-                                        Institutional discipline with downside protection focus.
-                                    </motion.p>
+                                    <p className="mt-3 text-sm leading-7 text-slate-300">
+                                        A disciplined investment process with
+                                        structured entry, recovery-focused
+                                        exit strategies, and robust downside
+                                        protection mechanisms.
+                                    </p>
                                 </motion.div>
 
-                                {/* LARGE CARD */}
+                                {/* INVESTMENT STRATEGY CARD */}
                                 <motion.div
                                     variants={cardVariants}
-                                    whileHover={{
-                                        y: -8,
-                                        scale: 1.02,
-                                        transition: { duration: 0.3 },
-                                    }}
-                                    className="sm:col-span-2 rounded-[32px] border border-[#009A9E]/20 bg-gradient-to-r from-[#009A9E]/10 to-[#7ACED4]/10 p-7"
+                                    whileHover={{ y: -5 }}
+                                    className="rounded-2xl border border-white/10 bg-white/[0.045] p-5 backdrop-blur-md transition-colors duration-300 hover:border-[#7ACED4]/30 sm:p-6"
                                 >
-                                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-                                        <div>
-                                            <motion.p
-                                                initial={{ opacity: 0, y: 10 }}
-                                                whileInView={{ opacity: 1, y: 0 }}
-                                                viewport={{ once: false, amount: 0.3 }}
-                                                transition={{ delay: 0.5, duration: 0.5 }}
-                                                className="text-sm font-medium text-[#7ACED4]"
-                                            >
-                                                Bharat Special Opportunity Fund
-                                            </motion.p>
+                                    <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#009A9E]/25 bg-[#009A9E]/10 text-[#7ACED4]">
+                                        <TrendingUp size={23} />
+                                    </div>
 
-                                            <motion.h3
-                                                initial={{ opacity: 0, y: 20 }}
-                                                whileInView={{ opacity: 1, y: 0 }}
-                                                viewport={{ once: false, amount: 0.3 }}
-                                                transition={{ delay: 0.6, duration: 0.6 }}
-                                                className="mt-3 text-2xl sm:text-3xl font-bold text-white leading-snug"
-                                            >
-                                                Focused on High-Conviction
-                                                Distressed & Special Situation Investments
-                                            </motion.h3>
+                                    <h3 className="mt-5 text-lg font-bold text-white sm:text-xl">
+                                        Investment Strategy
+                                    </h3>
+
+                                    <p className="mt-3 text-sm leading-7 text-slate-300">
+                                        Structured credit, acquisitions,
+                                        business turnarounds, and
+                                        resolution strategies for
+                                        special-situation opportunities.
+                                    </p>
+                                </motion.div>
+
+                                {/* SECTOR FOCUS CARD */}
+                                <motion.div
+                                    variants={cardVariants}
+                                    whileHover={{ y: -5 }}
+                                    className="rounded-2xl border border-[#009A9E]/25 bg-gradient-to-br from-[#009A9E]/15 to-[#7ACED4]/[0.06] p-5 backdrop-blur-md sm:col-span-2 sm:p-6"
+                                >
+                                    <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
+                                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#7ACED4]/25 bg-[#009A9E]/15 text-[#7ACED4]">
+                                            <Building2 size={23} />
                                         </div>
 
-                                        <motion.div
-                                            whileHover={{
-                                                scale: 1.1,
-                                                rotate: 45,
-                                                transition: { duration: 0.3 },
-                                            }}
-                                            whileTap={{
-                                                scale: 0.9,
-                                            }}
-                                            className="w-16 h-16 rounded-full bg-[#009A9E] text-white flex items-center justify-center flex-shrink-0 cursor-pointer"
-                                        >
-                                            <ArrowUpRight size={28} />
-                                        </motion.div>
+                                        <div className="min-w-0 flex-1">
+                                            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#7ACED4]">
+                                                Sector Focus
+                                            </p>
+
+                                            <h3 className="mt-2 text-xl font-bold leading-snug text-white sm:text-2xl">
+                                                Sector-Agnostic Opportunities
+                                            </h3>
+
+                                            <p className="mt-2 text-sm leading-6 text-slate-300">
+                                                Focus on sectors with
+                                                stressed-asset and
+                                                turnaround potential.
+                                            </p>
+
+                                            {/* SECTOR TAGS */}
+                                            <div className="mt-5 flex flex-wrap gap-2">
+                                                {sectors.map((sector) => (
+                                                    <span
+                                                        key={sector}
+                                                        className="rounded-lg border border-white/10 bg-[#00314A]/50 px-3 py-2 text-xs font-medium text-slate-200 sm:text-sm"
+                                                    >
+                                                        {sector}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
                                     </div>
                                 </motion.div>
                             </motion.div>
