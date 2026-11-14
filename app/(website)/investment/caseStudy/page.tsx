@@ -1,5 +1,5 @@
-import CaseStudy from "@/components/Investment/caseStudy/CaseStudy";
+import CaseStudy1 from "@/components/Investment/caseStudy/CaseStudy";
 
 export default function Page() {
-    return <CaseStudy />;
+    return <CaseStudy1 />;
 }
