@@ -3,3 +3,5 @@
 // export default function Page() {
 //     return <Mid />;
 // }
+
+export { };
